@@ -2,9 +2,15 @@
 <!--<input type="text" class="form-control" (input)="onUpdateServerName($event)">-->
 <input type="text" class="form-control" [(ngModel)]="serverName">
 <!--<p>{{serverName}}</p>-->
+<br>
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
 <!--<p>{{ serverCreationStatus }}</p>-->
-<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
-<ng-template #noServer>No server was created yet!</ng-template>
-<app-server></app-server>
-<app-server></app-server>
+<!--<p *ngIf="serverCreated; else noServer" >Server was created, server name is {{serverName}}</p>-->
+<!--<ng-template #noServer><p>No server was created yet!</p></ng-template>-->
+
+<p *ngIf="serverCreated" >Server was created, server name is {{serverName}}</p>
+
+<app-server *ngFor="let server of servers"></app-server>
+<br>
+<p appBasicHighlight>Styled with a basic directive, hype !</p>
+<p [appBetterHighlight]="'red'" defaultColor="yellow">Styled with a better directive, poweeer !</p>
